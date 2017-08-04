@@ -20,7 +20,7 @@ var webpackConfig = merge(baseWebpackConfig, {
       extract: true
     })
   },
-  devtool: config.build.productionSourceMap ? '##inline-source-map' : false,
+  devtool: config.build.productionSourceMap ? '#inline-source-map' : false,
   output: {
     path: config.build.assetsRoot,
     filename: utils.assetsPath('js/[name].[chunkhash].js'),
@@ -91,13 +91,13 @@ var webpackConfig = merge(baseWebpackConfig, {
       minChunks: 4 || chunks.length
     }),
     // copy custom static assets
-    //new CopyWebpackPlugin([
-    //  {
-    //    from: path.resolve(__dirname, '../static'),
-    //    to: config.build.assetsSubDirectory,
-    //    ignore: ['.*']
-    //  }
-    //])
+    new CopyWebpackPlugin([
+      {
+        from: path.resolve(__dirname, '../src/assets/images'),
+        to: config.build.assetsSubDirectory+'/images',
+        ignore: ['.*']
+      }
+    ])
   ]
 })
 
@@ -129,7 +129,7 @@ module.exports = webpackConfig;
 var pages = utils.getEntries(config.modules,'html');
 for(var pathname in pages){
   var config = {
-    filename: pathname+'html',
+    filename: pathname+'.html',
     template:pages[pathname], //模板路径
     chunks: [pathname, 'vendors', 'manifest'], // 每个html引用的js模块
     inject:true //js插入

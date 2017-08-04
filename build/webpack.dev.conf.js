@@ -39,7 +39,7 @@ var pages = utils.getEntries(config.modules,'html');
 for(var pathname in pages){
   console.log(pathname);
   var conf = {
-    filename: pathname+'html',
+    filename: pathname+'.html',
     template:pages[pathname], //模板路径
     chunks: [pathname, 'vendors', 'manifest'], // 每个html引用的js模块
     inject:true //js插入
