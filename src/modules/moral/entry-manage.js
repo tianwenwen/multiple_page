@@ -4,6 +4,7 @@
 
 import Vue from 'vue'
 import EntryManage from './views/entry-manage.vue'
+import 'src/assets/less/entry-manage.less';
 
 new Vue({
   el:"#EntryManage",
